@@ -1,15 +1,20 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
-let renderCount = 1;
+export const UserInformation = (props) => {
+  const [renderCount, setRenderCount] = useState(0);
+  const { age } = props;
 
-const Component = ({ data }) => {
-  useEffect(() => renderCount++);
+  useEffect(() => {
+    setRenderCount((renderCount) => {
+      return renderCount + 1;
+    });
+  }, [props]);
 
-  if (!data.age) return null;
+  if (!age) return null;
 
   return (
     <div>
-      {data.age < 18 ? (
+      {age < 18 ? (
         <span style={{ color: "red" }}>
           You are too young to be our employee
         </span>
@@ -20,5 +25,3 @@ const Component = ({ data }) => {
     </div>
   );
 };
-
-export default Component;

@@ -1,32 +1,15 @@
-import { useEffect, useState } from "react";
+export const Header = (props) => {
+  const { users } = props;
 
-export default () => {
-  const [users, setUsers] = useState([]);
+  let lastUserName = "";
 
-  useEffect(() => {
-    (async () => {
-      return new Promise((res) => {
-        fetch("https://jsonplaceholder.typicode.com/users").then((foo) => {
-          foo.json().then((bar) => {
-            console.log("test");
-            setUsers(bar);
-            res();
-          });
-        });
-      });
-    })();
-  }, []);
-
-  if (users.length === 0) return <></>;
+  if (users.length !== 0) {
+    lastUserName = users.slice(-1)[0].name;
+  }
 
   return (
     <div style={{ background: "grey", padding: 20, marginBottom: 5 }}>
-      Last employee is{" "}
-      <span
-        dangerouslySetInnerHTML={{
-          __html: `<strong>${users[users.length - 1].name}</strong>`
-        }}
-      ></span>
+      Last employee is <strong>{lastUserName}</strong>
     </div>
   );
 };
