@@ -14,6 +14,7 @@ export const AddNewUser = (props) => {
     if (age < 18) {
       alert("You are not old enough to be our employee");
     } else {
+      alert("Submiting form for " + newName);
       const newUser = {
         name: newName,
         age: age,
