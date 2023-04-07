@@ -1,20 +1,13 @@
-import { AddNewUser } from "./components/addnewuser";
-import Header from "./components/Header";
-import USERLIST from "./components/UserList";
+//views
+import { UsersView } from "./views/UsersView";
+
+//styles
 import "./styles.css";
 
-export default function App() {
+export const App = () => {
   return (
     <div className="App">
-      <div>
-        <Header name={"User foo"} />
-      </div>
-      <div>
-        <AddNewUser />
-      </div>
-      <div>
-        <USERLIST />
-      </div>
+      <UsersView />
     </div>
   );
-}
+};
